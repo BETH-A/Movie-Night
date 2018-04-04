@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css?family=Bree+Serif|IBM+Plex+Sans" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+
+    <title>Movie Night Out</title>
+    <link rel="stylesheet" href="assets/css/reset.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link type="text/css" href="assets/css/magnifier.css" rel="stylesheet">
+
+
+</head>
+
+<body>
+
+    <nav id="navbar-example2" class="navbar navbar-light">
+        <h2 class="text-center" id="nav" style="color:papayawhip" >Welcome!</h2>
+        <ul class="nav nav-pills">
+            <div class="btn-group">
+                <button type="button" class="btn  dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Login/Signup
+                </button>
+
+                <div class="dropdown-menu">
+                    <div class="px-4 py-3">
+                        <div class="form-group">
+                            <label for="txtEmail">Email address</label>
+                            <input type="email" class="form-control" id="txtEmail" placeholder="E-Mail">
+                        </div>
+                        <div class="form-group">
+                            <label for="txtPassword">Password</label>
+                            <input type="password" class="form-control" id="txtPassword" placeholder="Password">
+                        </div>
+                        <!-- <button type="submit" class="btn btn-primary">Sign in</button> -->
+                        <button type="button" id="btnLogin" class="btn btn-action signin">Signin</button>
+                        <button type="button" id="btnSignUp" class="btn btn-action signup">SignUp</button>
+                        <button type="button" id="btnLogout" class="btn btn-action invisible">Log out</button>
+                        <a class="dropdown-item disabled" href="#">Signin or SignUp with just a click!</a>
+                    </div>
+
+                </div>
+            </div>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <div class="jumbotron">
+            <h1 class="display-4 text-center">Now Playing Movies!</h1>
+            <br>
+            <h2 class="text-center" style="color:rgb(243,195,125)" id="jumboData">Select the movie of your choice to view its trailer, movie details,<br><br>
+                or<br><br> 
+                enter your zip code to find movie theaters near you!</h2>
+        </div>
+
+        <div class="row">
+            <div class="col-1"></div>
+            <div class="col-md-4 col-sm-12 table border" id="movies">
+                <h2 id="movieTitles" class="text-center">Movies</h2>
+                <div class="list-group">
+
+                </div>
+            </div>
+            <div class="col-md-6 col-sm-12 ">
+
+                <div class="card">
+
+                    <div style="width:100%">
+                        <div class="magnifier" style="height: 750px; width: 443px;">
+                            <div class="maglens" style="width:150px; height:150px">
+                                <img src="assets/images/Las Vegas.jpeg" class="maglarge" alt="Card image cap" ismap="ismap" usemap="#kaart" id="poster" style="height:1500px; width:890px;">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card-body">
+                        <p class="card-text movie-title text-center">Fear and Loathing in Las Vegas</p>
+                        <div style="text-align: center;">
+                            <button type="button" class="btn trailer btn-md btn-block" data-toggle="modal" data-target="#myYouTubeModal">Click to View the Movie Trailer</button>
+                            <!-- Modal -->
+                            <div id="myYouTubeModal" class="modal fade" role="dialog">
+                                <div class="modal-dialog modal-lg">
+
+                                    <!-- Modal content-->
+                                    <div class="modal-content ">
+                                        <div class="modal-body youtube-modal">
+
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-default close" data-dismiss="modal">Close</button>
+                                        </div>
+                                    </div>
+                                    <!--End Modal content-->
+                                </div>
+
+                            </div>
+                            <br>
+                            <input style="line-height:20px; border-radius: 5px;" type="text" name="zip" maxlength="5" size="8" id="zip" placeholder="Enter your zip">
+                            <button type="button" class="btn theaters btn-sm text-center" data-toggle="modal" data-target="#myMapModal"> Theaters Near You</button>
+                            <!-- Modal -->
+                            <div id="myMapModal" class="modal fade" role="dialog">
+                                <div class="modal-dialog modal-lg">
+
+                                    <!-- Modal content-->
+                                <div class="modal-content">
+                                    <div class="modal-map-body">
+                                            <iframe width="600" height="450" frameborder="0" style="border:0" allowfullscreen>
+                                            </iframe>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                        </div>
+                                    </div>
+                                    <!--End Modal content-->
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-1"></div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-1"></div>
+            <div class="col-9 border" id="movieData">
+                <h2 class="movie-details-title">Movie Details</h2>
+                <br>
+                <div class="movie-details">
+                    <p class="movie-title-details">Movie Title: </p>
+                    <br>
+                    <p class="overview">Movie Overview: </p>
+                    <br>
+                    <p class="released">Movie Released: </p>
+                    <br>
+                    <p class="cast">Cast and Role: </p>
+                    <br>
+                    <p class="genres">Genres: </p>
+                    <br>
+                </div>
+                <div class="col-2"></div>
+            </div>
+        </div>
+    </div>
+
+	<footer>
+            <div class="container">
+              Copyright &copy; 2018 Beth Arnold
+            </div>
+             </footer>
+      
+    <!-- Optional JavaScript -->
+    <script type="text/javascript" src="magnifier.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase-messaging.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase-functions.js"></script>
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    <script type="text/javascript" src="assets/javascript/app.js"></script>
+</body>
+
+</html>
