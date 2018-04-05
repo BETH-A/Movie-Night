@@ -143,14 +143,15 @@ $(".btn.close").click(function () {
 });
 
 var config = {
-    apiKey: "AIzaSyD1U9ReBiBnL00B1lH5tFUpZJEgnLiyCTM",
-    authDomain: "project1-ucf-coding-bootcamp.firebaseapp.com",
-    databaseURL: "https://project1-ucf-coding-bootcamp.firebaseio.com",
-    projectId: "project1-ucf-coding-bootcamp",
-    storageBucket: "project1-ucf-coding-bootcamp.appspot.com",
-    messagingSenderId: "475451427154"
-};
-firebase.initializeApp(config);
+    apiKey: "AIzaSyBIMpmyvHRZq8MwLoAPDkXKW5yEU69crHc",
+    authDomain: "project1-80028.firebaseapp.com",
+    databaseURL: "https://project1-80028.firebaseio.com",
+    projectId: "project1-80028",
+    storageBucket: "project1-80028.appspot.com",
+    messagingSenderId: "88612402615"
+  };
+  firebase.initializeApp(config);
+
 var database = firebase.database();
 
 
