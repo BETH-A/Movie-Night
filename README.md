@@ -1,7 +1,7 @@
 # Project1
 Movie Night Out (Project 1 Group Project)
 
- https://beth-a.github.io/Project-1/
+https://beth-a.github.io/Movie-Night/
  
  Group project developed with 3 classmates.  This web app uses an API to get data from an external site to render current movies and some of the info regarding that movie on our HTML page.
  
